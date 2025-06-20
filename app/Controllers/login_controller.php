@@ -1,7 +1,7 @@
 <?php 
 namespace App\Controllers;
-Use App\Models\usuarios_model;
-Use CodeIgniter\Controller;
+use App\Models\usuarios_model;
+use CodeIgniter\Controller;
 
 class login_controller extends BaseController
 {
@@ -27,25 +27,25 @@ class login_controller extends BaseController
 
         $data = $model->where('email', $email)->first();
         if ($data){
-            $pass = $data ['pass'];
-                $ba = $data ['baja'];
+            $pass = $data['pass'];
+                $ba = $data['baja'];
                     if ($ba == 'SI'){
                         $session->setFlashdata('msg', 'Usuario dado de baja');
-                        return direct()->to('/login_controller');
+                        return redirect()->to('/login');
                 }
                     // Se verifica los datos ingresados para ingresar, si cumple la verificacion, inicia la session
                 $verify_pass = password_verify($password, $pass);
                     // password_verify determina los requisitos de configuracion de la contraseña
                 if ($verify_pass){
                     $ses_data = [
-                        'id_usuario'     => $data ['id_usuario'],
-                        'nombre'         => $data ['nombre'],
-                        'apellido'       => $data ['apellido'],
-                        'direccion'      => $data ['direccion'],
-                        'codigo_postal'  => $data ['codigo_postal'],
-                        'telefono'       => $data ['telefono'],
-                        'email'          => $data ['email'],
-                        'perfil_id'      => $data ['perfil_id'],
+                        'id_usuario'     => $data['id_usuario'],
+                        'nombre'         => $data['nombre'],
+                        'apellido'       => $data['apellido'],
+                        'direccion'      => $data['direccion'],
+                        'codigo_postal'  => $data['codigo_postal'],
+                        'telefono'       => $data['telefono'],
+                        'email'          => $data['email'],
+                        'perfil_id'      => $data['perfil_id'],
                         'logged_in'      =>  TRUE
                     ];
                     //Se cumple la verificacion, inicia session
@@ -56,18 +56,17 @@ class login_controller extends BaseController
                 } else {
                     //no paso la validacion de password 
                     $session->setFlashdata('msg', 'Contraseña Incorrecta');
-                    return redirect()->to('/login_controller');  
-        } else {
-            $session->setFlashdata('msg', 'No Existe el Email o es Incorrecto');
-            return redirect()->to('/login_controller');
+                    return redirect()->to('/login');  
+                }
+                } else {
+            $session->setFlashdata('msg', 'No existe el Email o es Incorrecto');
+            return redirect()->to('/login');
         }
     }
-}
 
-    public function logout ()
-    {
+    public function logout (){
         $session = session();
-        $session = destroy();
-        return redirect()->to ('/');
+        $session->destroy();
+        return redirect()->to('/');
     }
 }

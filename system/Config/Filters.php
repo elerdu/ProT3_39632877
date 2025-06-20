@@ -47,7 +47,7 @@ class Filters extends BaseConfig
         'forcehttps'    => ForceHTTPS::class,
         'pagecache'     => PageCache::class,
         'performance'   => PerformanceMetrics::class,
-        'auth'          => \system\Config\Filters\Auth::class
+        'auth'          => \App\Filters\Auth::class
     ];
 
     /**

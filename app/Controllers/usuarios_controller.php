@@ -1,7 +1,7 @@
 <?php
 namespace App\Controllers;
-Use App\Models\usuarios_model;
-Use CodeIgniter\Controller;
+use App\Models\usuarios_model;
+use CodeIgniter\Controller;
 
 class usuarios_controller extends Controller {
     public function __construct(){
@@ -52,7 +52,7 @@ class usuarios_controller extends Controller {
 
         //flashdata funciona solo en redirigir la funcion en el controlador en la vista de carga, es decir que te redirige al terminar el registro a una parte de la pagina.
             session()->setflashdata('msg','Usuario registrado con exito');
-            return $this->response->redirect('/login');
+            return $this->response->redirect('/registro');
         }
     }
 }

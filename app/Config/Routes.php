@@ -23,3 +23,10 @@ $routes->get('/login', 'login_controller');
 $routes->post('/enviarlogin','login_controller::auth');
 $routes->get('/panel', 'panel_controller::index',['filter' => 'auth']);
 $routes->get('/logout', 'login_controller::logout');
+/* rutas admin */ 
+$routes->get('/usuarios/listar', 'usuarios_controller::listar');
+$routes->get('/usuarios/editar/(:num)', 'usuarios_controller::editar/$1');
+$routes->get('/usuarios/eliminar/(:num)', 'usuarios_controller::eliminar/$1');
+
+$routes->get('/usuarios/editar/(:num)', 'usuarios_controller::editar/$1');
+$routes->post('/usuarios/actualizar/(:num)', 'usuarios_controller::actualizar/$1');

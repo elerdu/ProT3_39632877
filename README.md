@@ -1,7 +1,15 @@
 # CodeIgniter 4 Framework
 
-## What is CodeIgniter?
 
+
+
+## Base de datos gonzalez_eduardo.sql
+Queria aclarar que mi Base de datos esta situado mismo dentro de la carpeta madre ProT3_39632877 en la cual mi Base de datos es  llamado: gonzalez_eduardo.sql 
+## Fin aclaracion
+
+
+
+## What is CodeIgniter?
 CodeIgniter is a PHP full-stack web framework that is light, fast, flexible and secure.
 More information can be found at the [official site](https://codeigniter.com).
 

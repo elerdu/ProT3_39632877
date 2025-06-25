@@ -84,4 +84,20 @@ class Home extends BaseController
         echo view('front/preguntas_frecuentes');
         echo view('front/footer_view');
     }
+        public function editar()
+    {
+        $data['titulo']='Preguntas Frecuentes';
+        echo view('front/head_view',$data);
+        echo view('front/navbar_view');
+        echo view('back/usuario/editar');
+        echo view('front/footer_view');
+    }
+    public function usuario_logueado()
+    {
+        $data['titulo']='Preguntas Frecuentes';
+        echo view('front/head_view',$data);
+        echo view('front/navbar_view');
+        echo view('back/usuario/usuario_logueado');
+        echo view('front/footer_view');
+    }
 }

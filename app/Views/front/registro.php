@@ -13,7 +13,7 @@
                             <div class="alert alert-danger"><?=session()->getFlashdata('fail');?></div>
                             <?php endif?>
                         <?php if (!empty (session()->getFlashdata('success'))):?>
-                        <div class="alert alert-danger"><?=session()->getFlashdata('success');?></div)
+                        <div class="alert alert-danger"><?=session()->getFlashdata('success');?></div>
                         <?php endif?>
                         <div class="row mb-3">
                             <div class="col-md-6">

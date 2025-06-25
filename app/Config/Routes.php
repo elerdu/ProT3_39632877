@@ -27,6 +27,6 @@ $routes->get('/logout', 'login_controller::logout');
 $routes->get('/usuarios/listar', 'usuarios_controller::listar');
 $routes->get('/usuarios/editar/(:num)', 'usuarios_controller::editar/$1');
 $routes->get('/usuarios/eliminar/(:num)', 'usuarios_controller::eliminar/$1');
-
-$routes->get('/usuarios/editar/(:num)', 'usuarios_controller::editar/$1');
 $routes->post('/usuarios/actualizar/(:num)', 'usuarios_controller::actualizar/$1');
+$routes->get('/usuarios/verEliminados', 'usuarios_controller::verEliminados');
+$routes->get('/usuarios/restaurar/(:num)', 'usuarios_controller::restaurar/$1');

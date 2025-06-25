@@ -49,7 +49,7 @@ class usuarios_controller extends Controller {
         ]);
 
         session()->setFlashdata('msg', 'Usuario registrado con éxito');
-        return $this->response->redirect('/registro');
+        return redirect()->to('/login');
     }
 }
 
@@ -131,5 +131,39 @@ public function eliminar($id = null)
     $model->update($id, ['baja' => 'SI']);
 
     return redirect()->to('/usuarios/listar')->with('msg', 'Usuario eliminado correctamente');
+}
+
+public function verEliminados()
+{
+    if (session()->get('perfil_id') != 1) {
+        return redirect()->to('/')->with('msg', 'Acceso denegado');
+    }
+
+    $model = new usuarios_model();
+    $data['usuarios'] = $model->where('baja', 'SI')->findAll();
+    $data['titulo'] = 'Usuarios eliminados';
+
+    echo view('front/head_view', $data);
+    echo view('front/navbar_view');
+    echo view('back/usuario/usuarios_eliminados', $data); // vista que crearemos
+    echo view('front/footer_view');
+}
+
+public function restaurar($id = null)
+{
+    if (session()->get('perfil_id') != 1) {
+        return redirect()->to('/')->with('msg', 'Acceso denegado');
+    }
+
+    $model = new usuarios_model();
+
+    $usuario = $model->find($id);
+    if (!$usuario) {
+        return redirect()->to('/usuarios/verEliminados')->with('msg', 'Usuario no encontrado');
+    }
+
+    $model->update($id, ['baja' => 'NO']);
+
+    return redirect()->to('/usuarios/verEliminados')->with('msg', 'Usuario restaurado correctamente');
 }
 }

@@ -15,16 +15,22 @@
         <!-- Navbar para Admin-->
         <?php if (session()->perfil_id == 1): ?>
             <div class="btn btn-secundary active btnUser btn-sm">
-                <a href=""> ADMIN:  <?php echo session('nombre');?> </a>
+                <a href="<?php echo base_url ('/usuarios/listar');?>"> ADMIN:  <?php echo session('nombre');?> </a>
             </div>
         <a class="navbar-brand" href="#"> </a>
         <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
-                <a class="nav-link active" href="principal">Inicio</a>
+                <a class="nav-link" href="<?php echo base_url ('/principal');?>" tabindex="-1" aria-disabled="true">Inicio </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="catalogo">Catalogo</a>
+                <a class="nav-link" href="<?php echo base_url ('/catalogo');?>" tabindex="-1" aria-disabled="true">Catalogo </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="<?php echo base_url ('/usuarios/listar');?>" tabindex="-1" aria-disabled="true">Panel admin </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="<?php echo base_url ('usuarios/verEliminados');?>" tabindex="-1" aria-disabled="true">Usuarios Eliminados</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="<?php echo base_url ('/logout');?>" tabindex="-1" aria-disabled="true">Cerrar Sesión </a>
